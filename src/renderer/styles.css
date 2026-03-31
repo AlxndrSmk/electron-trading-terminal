@@ -1,0 +1,174 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f1522;
+  --bg-panel: #151d2e;
+  --text: #e7edf8;
+  --muted: #8da0bf;
+  --border: #24314a;
+  --accent: #4fd1c5;
+  --up: #2ecc71;
+  --down: #ff5f6d;
+}
+
+body[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f4f7fb;
+  --bg-panel: #ffffff;
+  --text: #10213d;
+  --muted: #4b5d7b;
+  --border: #d2dced;
+  --accent: #2563eb;
+  --up: #16a34a;
+  --down: #dc2626;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.layout {
+  min-height: 100vh;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-panel);
+  padding: 12px 14px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.topbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.selected-label {
+  color: var(--muted);
+}
+
+button {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(460px, 1fr) minmax(420px, 1fr);
+  gap: 12px;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-panel);
+  padding: 10px;
+}
+
+.panel-title {
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.instrument-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.instrument-table th,
+.instrument-table td {
+  text-align: left;
+  border-top: 1px solid var(--border);
+  padding: 8px;
+  font-size: 13px;
+}
+
+.instrument-table th {
+  color: var(--muted);
+  font-weight: 600;
+  border-top: 0;
+}
+
+.instrument-row {
+  cursor: pointer;
+  transition: background 120ms ease-out;
+}
+
+.instrument-row:hover {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.instrument-row.selected {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.instrument-row.flash-up {
+  background: color-mix(in srgb, var(--up) 28%, transparent);
+}
+
+.instrument-row.flash-down {
+  background: color-mix(in srgb, var(--down) 28%, transparent);
+}
+
+.chart-wrap {
+  height: 300px;
+}
+
+.detail-layout .detail-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+}
+
+.metric {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  display: grid;
+  gap: 6px;
+}
+
+.metric span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.metric strong {
+  font-size: 20px;
+}
+
+@media (max-width: 1220px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
